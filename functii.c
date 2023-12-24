@@ -6,7 +6,7 @@
 extern int interrupted;
 
 void usage_error(int argc, char* argv[]){
-    fprintf(stderr, "Usage: %s [-t <minutes>]\n", argv[0]);
+    fprintf(stderr, "Usage: %s [-t <minutes>] [-s <source>]\n", argv[0]);
     exit(EXIT_FAILURE);
 }
 
@@ -46,7 +46,7 @@ int readConfig(const char *fileName, char** source, char** destination, char** u
                 *ip = createArray(strlen(value));
                 strncpy(*ip, value, strlen(value));
             }
-            if(strcmp(arg, "SOURCE") == 0){
+            if(strcmp(arg, "SOURCE") == 0 && *source == NULL){
                 //printf("%s \n", value);
                 *source = createArray(strlen(value));
                 strncpy(*source, value, strlen(value));

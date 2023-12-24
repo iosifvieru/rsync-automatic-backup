@@ -6,25 +6,30 @@ extern char* optarg;
 int interrupted = 0;
 
 int main(int argc, char* argv[]){
-    int opt, time, err;
+    int opt, time = 10, err;
     char* ip, *user, *source, *destination;
 
     // signal handler
     signal(SIGINT, handle_interrupt);
 
-    while((opt = getopt(argc, argv, "t:")) != -1){
+    while((opt = getopt(argc, argv, "s:t:")) != -1){
         switch(opt){
             case 't':
                 time = atoi(optarg);
-                //printf("TIME: %d\n", time);
+                break;
+            case 's':
+                source = createArray(strlen(optarg));
+                strncpy(source, optarg, strlen(optarg));
                 break;
             default:
                 usage_error(argc, argv);
+                break;
         }
     }
 
     if(optind == 1){
         usage_error(argc, argv);
+        //time = 1;
     }
 
     err = readConfig("config", &source, &destination, &user, &ip);
