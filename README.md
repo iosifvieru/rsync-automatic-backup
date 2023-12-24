@@ -11,14 +11,15 @@ This program uses rsync to transfer files from a specified folder to a remote lo
 
 2. Compile the code using the provided Makefile.
 
-	`make clean
-   make`
+	`make clean`
+
+  	`make`
    
-3. Command line arguments:
+4. Command line arguments:
    
   	`-t <minutes> specifies the time between backups.`
 
-4. Configure config file with your specifications.
+5. Configure config file with your specifications.
    
 	 	USER=tero
 		IP=192.168.1.15
